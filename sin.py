@@ -4,8 +4,8 @@ import requests, time, struct, sys
 from math import sin, cos, sqrt, pow
 
 url = '' # e.g.: http://192.168.0.42/
-fbuf = ''
 
+fbuf = '' # do not change
 xres = 16
 yres = 115
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     ms = round(time.time() * 100)
     for x in range(0, xres):
       for y in range(0, yres):
-        color = waves_moving(x,y,ms)
+        color = waves_moving(x,y,ms) # replace function with waves or stripes if you like
         fbuf += ' ' if color > 0 else 'X'
       fbuf += '\n'
     
@@ -51,5 +51,5 @@ if __name__ == '__main__':
       print(requests.post(url + 'framebuffer', data=bytes(fbuf, 'utf-8')))
     except:
       time.sleep(1)
-    
+
     time.sleep(0.05)
